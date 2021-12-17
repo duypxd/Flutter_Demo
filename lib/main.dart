@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'StatelessWidget.dart';
-import 'StatefulWidget.dart';
+// import 'StatefulWidget.dart';
+import 'AddLibToFlutter.dart';
 
-void main() => runApp(StatefulWidgetMyApp(name: 'DuyPham', age: 26));
+void main() => runApp(AddLibToFlutter());
