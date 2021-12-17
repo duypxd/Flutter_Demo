@@ -11,11 +11,51 @@ class StatefulWidgetMyApp extends StatefulWidget {
   }
 }
 
-class _MyAppState extends State<StatefulWidgetMyApp> {
+class _MyAppState extends State<StatefulWidgetMyApp>
+    with WidgetsBindingObserver {
+
   late String _email = '';
 
   final emailEditingController = TextEditingController();
-  
+  // ---- life cycle ----
+  // 1. initState
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addObserver(this);
+    // print('Run initState()');
+  }
+
+  // 2. dispose ( is called when state/widget object is removed)
+  @override
+  void dispose() {
+    super.dispose();
+    emailEditingController.dispose();
+    WidgetsBinding.instance?.removeObserver(this);
+    print('Run dispose()');
+  }
+
+  // AppState
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.inactive:
+        print('appLifeCycleState inactive');
+        break;
+      case AppLifecycleState.resumed:
+        print('appLifeCycleState resumed');
+        break;
+      case AppLifecycleState.paused:
+        print('appLifeCycleState paused');
+        break;
+      case AppLifecycleState.detached:
+        print('appLifeCycleState detached');
+        break;
+    }
+  }
+
+  // 3. build ( is triggered when we call setState())
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
