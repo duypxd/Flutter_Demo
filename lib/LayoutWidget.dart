@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'transaction.dart';
 import 'transactionList.dart';
+import 'package:intl/intl.dart';
 
 class LayoutWidget extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _MyLayoutWidget extends State<LayoutWidget> with WidgetsBindingObserver {
   final _amountController = TextEditingController();
 
   // define state
-  Transaction _transaction = Transaction(content: '', amount: 0.0);
+  Transaction _transaction = Transaction(content: '', amount: 0.0, createdAt: DateTime.now());
   List<Transaction> _transactions = <Transaction>[];
 
   @override
@@ -42,12 +43,12 @@ class _MyLayoutWidget extends State<LayoutWidget> with WidgetsBindingObserver {
     } else {
       _scaffoldKey.currentState?.showSnackBar(SnackBar(
         content: Text(
-            'Content = ${_transaction.content}, money\'s amount = ${_transaction.amount}'),
+            'Content = ${_transaction.content}, money\'s amount = ${_transaction.amount}, CreateAt = ${DateFormat.yMd().format(_transaction.createdAt)}'),
         duration: Duration(seconds: 3),
       ));
       setState(() {
         _transactions.add(_transaction);
-        _transaction = Transaction(content: '', amount: 0.0);
+        _transaction = Transaction(content: '', amount: 0.0, createdAt: DateTime.now());
         _contentController.text = '';
         _amountController.text = '';
       });
