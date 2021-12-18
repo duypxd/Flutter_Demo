@@ -34,14 +34,44 @@ class _MyLayoutWidget extends State<LayoutWidget> with WidgetsBindingObserver {
     WidgetsBinding.instance?.removeObserver(this);
   }
 
+  void _insertTransaction() {
+    if (_transaction.content.isEmpty ||
+        _transaction.amount == 0.0 ||
+        _transaction.amount.isNaN) {
+      return;
+    } else {
+      _scaffoldKey.currentState?.showSnackBar(SnackBar(
+        content: Text(
+            'Content = ${_transaction.content}, money\'s amount = ${_transaction.amount}'),
+        duration: Duration(seconds: 3),
+      ));
+      setState(() {
+        _transactions.add(_transaction);
+        _transaction = Transaction(content: '', amount: 0.0);
+        _contentController.text = '';
+        _amountController.text = '';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           title: const Text('Home'),
+          actions: <Widget>[
+            IconButton(
+                onPressed: () =>  _insertTransaction(),
+                icon: Icon(Icons.add))
+          ],
         ),
-        key: _scaffoldKey,
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Add Transaction',
+          child: Icon(Icons.add),
+          onPressed: () => _insertTransaction(),
+        ),
         body: SafeArea(
           minimum: const EdgeInsets.only(left: 20, right: 20),
           child: Center(
@@ -68,26 +98,6 @@ class _MyLayoutWidget extends State<LayoutWidget> with WidgetsBindingObserver {
                   decoration: InputDecoration(labelText: 'Amout (money)'),
                 ),
                 Padding(padding: const EdgeInsets.symmetric(vertical: 10)),
-                ButtonTheme(
-                    height: 44,
-                    child: FlatButton(
-                        onPressed: () {
-                          _scaffoldKey.currentState?.showSnackBar(SnackBar(
-                            content: Text(
-                                'Content = ${_transaction.content}, money\'s amount = ${_transaction.amount}'),
-                            duration: Duration(seconds: 3),
-                          ));
-                          setState(() {
-                            _transactions.add(_transaction);
-                            _transaction =
-                                Transaction(content: '', amount: 0.0);
-                            _contentController.text = '';
-                            _amountController.text = '';
-                          });
-                        },
-                        color: Colors.blue,
-                        textColor: Colors.white,
-                        child: Text('Insert Transaction'))),
                 TransactionList(transactions: _transactions)
               ],
             )),
