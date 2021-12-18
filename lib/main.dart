@@ -4,4 +4,6 @@ import 'package:flutter/material.dart';
 // import 'AddLibToFlutter.dart';
 import 'LayoutWidget.dart';
 
-void main() => runApp(LayoutWidget());
+void main() => runApp(MaterialApp(
+      home: LayoutWidget(),
+    ));
