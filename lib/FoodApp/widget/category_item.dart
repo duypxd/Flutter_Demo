@@ -15,10 +15,7 @@ class CategoryItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(this.category.content,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold)),
+                style: Theme.of(context).textTheme.headline6),
           ],
         ),
         decoration: BoxDecoration(
