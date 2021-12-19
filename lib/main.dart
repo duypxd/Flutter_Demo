@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
-// import 'StatelessWidget.dart';
-// import 'StatefulWidget.dart';
-// import 'AddLibToFlutter.dart';
-import 'LayoutWidget.dart';
 
-void main() => runApp(MaterialApp(
-      home: LayoutWidget(),
-    ));
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Food App with navigation',
+      theme: ThemeData(primaryColor: Colors.red),
+      home: Scaffold(
+        body: Center(
+          child: Text(
+            'Food App with navigation',
+            style: TextStyle(color: Colors.black, fontSize: 20),
+          ),
+        ),
+      ),
+    );
+  }
+}
