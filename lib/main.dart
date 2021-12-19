@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import './FoodApp/screens/categories_page.dart';
 import './FoodApp/screens/foods_page.dart';
+import './FoodApp/screens/detail_food_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/FoodsPage': (context) => FoodsPage(),
-        '/CategoriesPage': (context) => CategoriesPage()
+        '/CategoriesPage': (context) => CategoriesPage(),
+        '/DetailFoodPage': (context) => DetailFoodPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.red,
