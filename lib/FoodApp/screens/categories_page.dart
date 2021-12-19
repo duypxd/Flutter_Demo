@@ -3,11 +3,12 @@ import '../widget/category_item.dart';
 import '../models/fakeData.dart';
 
 class CategoriesPage extends StatelessWidget {
+  static const String routeName = '/CategoriesPage';
   @override
   Widget build(BuildContext context) {
     return GridView(
-      padding: EdgeInsets.all(16),
-        children: FAKE_CATEGORY
+        padding: EdgeInsets.all(16),
+        children: FAKE_CATEGORIES
             .map((eachCategory) => CategoryItem(category: eachCategory))
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

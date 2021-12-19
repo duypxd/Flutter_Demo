@@ -1,7 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:todo_list/FoodApp/screens/categories_page.dart';
+
+import './FoodApp/screens/categories_page.dart';
+import './FoodApp/screens/foods_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,6 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/FoodsPage': (context) => FoodsPage(),
+        '/CategoriesPage': (context) => CategoriesPage()
+      },
       theme: ThemeData(
         primarySwatch: Colors.red,
         fontFamily: 'Itim',
