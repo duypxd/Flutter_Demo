@@ -21,7 +21,7 @@ class FoodsPage extends StatelessWidget {
         FAKE_FOODS.where((food) => food.categoryId == category?.id).toList();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Foods from category'),
+        title: Text('VinMart from category'),
       ),
       body: Center(
         child: Center(

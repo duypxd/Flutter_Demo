@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Now Food'),
+          title: Text('VinMart'),
         ),
         body: SafeArea(child: CategoriesPage()),
       ),
