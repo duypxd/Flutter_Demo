@@ -2,11 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '././FoodApp/blocs/app_bloc_observer.dart';
-import '././FoodApp/blocs/theme_bloc.dart';
-import '././FoodApp/screens/categories_page.dart';
-import '././FoodApp/screens/foods_page.dart';
-import '././FoodApp/screens/detail_food_page.dart';
+import '../FoodApp/blocs/app_bloc_observer.dart';
+import '../FoodApp/blocs/theme_bloc.dart';
+import '../FoodApp/screens/categories_page.dart';
+import '../FoodApp/screens/foods_page.dart';
+import '../FoodApp/screens/detail_food_page.dart';
 
 void main() => {
       BlocOverrides.runZoned(() => runApp(MyApp()),
